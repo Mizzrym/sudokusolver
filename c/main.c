@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void cli_print(int sudoku[9][9]);
 int solve(int sudoku[9][9], int row, int col);
@@ -19,8 +20,12 @@ main(void) {
                     {0, 0, 0, 0, 0, 5, 0, 0, 0},
                     {6, 0, 3, 0, 7, 0, 0, 5, 0}
                 };
-    solve(sudoku, 0, 0);
-    cli_print(sudoku);
+    if(solve(sudoku, 0, 0)) {
+        cli_print(sudoku);
+        return EXIT_SUCCESS;
+    }
+    printf("Couldn\'t find a solution :(\n");
+    return EXIT_FAILURE;
 }
 
 int
